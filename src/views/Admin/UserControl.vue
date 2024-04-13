@@ -33,8 +33,8 @@ const getUserlist =async ()=>{
     page: pageNum.value,
     pageSize: pageSize.value,
   }
-  let result= await Userlist(params);
-  users.value=result.data.data.rows;
+  let result= await Userlist(params)
+  users.value=result.data.rows;
   total.value=result.data.total;
 }
 getUserlist();
@@ -58,7 +58,7 @@ getUserlist();
       <el-table-column label="用户邮箱" prop="email"> </el-table-column>
       <el-table-column label="用户等级" prop="level"></el-table-column>
       <el-table-column label="操作" width="100">
-        <template #default="{ row }">
+        <template #default="{ rows }">
           <el-button :icon="Edit" circle plain type="primary"></el-button>
           <el-button :icon="Delete" circle plain type="danger"></el-button>
         </template>

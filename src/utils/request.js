@@ -2,13 +2,7 @@
 import axios from 'axios';
 import { ElMessage } from 'element-plus'
 import { useTokenStore } from '@/stores/token.js';
-import { createRouter, createWebHashHistory } from 'vue-router';
 
-// 创建 router 实例
-const router = createRouter({
-    history: createWebHashHistory(),
-    routes: []
-});
 
 //定义一个变量,记录公共的前缀  ,  baseURL
 const baseURL = '/api';
@@ -29,7 +23,7 @@ instance.interceptors.request.use(
         return Promise.reject(err)
     }
 )
-
+import router from '@/router';
 
 //添加响应拦截器
 instance.interceptors.response.use(
@@ -38,19 +32,12 @@ instance.interceptors.response.use(
         if (result.data.code == 1) {
             return result.data;
         }
-        //代码走到这里，代表业务状态码不是0，本次操作失败
-        ElMessage.error(result.data.message || '服务异常');
-        return Promise.reject(result.data);//异步的状态转化成失败的状态
-    },
-    err => {
-        //如果响应状态码时401，代表未登录，给出对应的提示，并跳转到登录页
-        if(err.response.status===401){
-            ElMessage.error('请先登录！')
+        if(result.data.code==0&&result.data.msg=="NOT_LOGIN"){
+            ElMessage.error('未登录，将跳转到登陆界面');
             router.push('/login')
-        }else{
-            ElMessage.error('服务异常');
         }
-        return Promise.reject(err);//异步的状态转化成失败的状态
+        //代码走到这里，代表业务状态码不是1，本次操作失败
+
     }
 )
 
