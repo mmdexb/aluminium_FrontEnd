@@ -68,7 +68,6 @@ const register=async ()=>{
     let result = await userRegisterService(registerData.value);
     ElMessage.success("注册成功")
     router.push('/login')
-
     // if (result.code==1){
     //   alert("注册成功");
     // }else{
