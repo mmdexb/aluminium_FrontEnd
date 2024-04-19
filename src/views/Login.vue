@@ -39,12 +39,21 @@ const validate_email = (rule, value, callback) => {
     }
 };
 
+//定义检查cid为数字函数
+const validate_cid = (rule, value, callback) => {
+  if (!/^\d+$/.test(value)) {
+    callback(new Error('请输入数字格式的cid'));
+  } else {
+    callback();
+  }
+};
+
 //定义表单校验规则
 const rules={
     cid:[
         {required:true,message:"请输入用户名",trigger:'blur'},
-        {min:4,max:16,message:"cid应在4-16位字符",trigger:'blur'}
-
+        {min:4,max:16,message:"cid应在4-16位数字",trigger:'blur'},
+        { validator: validate_cid, trigger: 'blur' }
     ],
     password:[
         {required:true,message:"请输入密码",trigger:'blur'},

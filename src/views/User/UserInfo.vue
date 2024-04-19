@@ -1,11 +1,14 @@
-<script setup>
+<script lang="ts" setup>
 
 </script>
 
+
 <template>
-用户信息
+
 </template>
 
-<style scoped lang="scss">
+
+<style>
 
 </style>
+

@@ -4,10 +4,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import LayoutVue from '@/views/Layout.vue'
 import ActivityInfo from '@/views/Activity/ActivityInfo.vue'
 import DashBoard from "@/views/DashBoard/DashBoard.vue";
-import FeedBack from "@/views/User/FeedBack.vue";
 import UserInfo from "@/views/User/UserInfo.vue";
 import BeforeFly from "@/views/BeforeFlight/BeforeFly.vue";
-import FlightInfo from "@/views/User/FlightInfo.vue";
 import UserControl from "@/views/Admin/UserControl.vue";
 import ActivityControl from "@/views/Admin/ActivityControl.vue";
 
@@ -23,10 +21,8 @@ const routes = [
         children: [
             { path: '/DashBoard', component: DashBoard},
             { path: '/ActivityInfo', component: ActivityInfo },
-            { path: '/User/FeedBack', component: FeedBack },
             { path: '/BeforeFlight', component: BeforeFly },
             { path: '/User/UserInfo', component: UserInfo },
-            { path: '/User/FlightInfo', component: FlightInfo },
             { path: '/Admin/UserControl', component: UserControl },
             { path: '/Admin/ActivityControl', component: ActivityControl },
         ]
