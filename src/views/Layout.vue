@@ -90,7 +90,7 @@ import avatar from '@/assets/default.png'
     <!-- 右侧主区域 -->
     <el-container>
       <!-- 头部区域 -->
-      <el-header>
+      <el-header height="60px">
         <div>早上好：<strong>LinusChen</strong></div>
         <el-dropdown placement="bottom-end">
                     <span class="el-dropdown__box">
@@ -111,7 +111,7 @@ import avatar from '@/assets/default.png'
 
       <!-- 中间区域 -->
       <el-main>
-        <div style="width: 100%; height: 100%;border: 1px solid red;">
+        <div style="width: 100%; height: 100%;">
           <router-view></router-view>
         </div>
       </el-main>

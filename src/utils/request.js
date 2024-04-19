@@ -36,7 +36,6 @@ instance.interceptors.response.use(
             ElMessage.error('未登录，将跳转到登陆界面');
             router.push('/login')
         }
-        //代码走到这里，代表业务状态码不是1，本次操作失败
 
     }
 )

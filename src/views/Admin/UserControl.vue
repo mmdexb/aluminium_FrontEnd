@@ -51,7 +51,7 @@ getUserlist();
         </div>
       </div>
     </template>
-    <!-- 文章列表 -->
+
     <el-table :data="users" style="width: 100%">
       <el-table-column label="用户CID" width="200" prop="cid"></el-table-column>
       <el-table-column label="用户真实姓名"  width="300" prop="realname"></el-table-column>
