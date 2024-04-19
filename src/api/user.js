@@ -18,3 +18,11 @@ export const userLoginService=(loginData)=>{
     }
     return  request.post('/login',params)
 }
+
+export const GetUserInfo=()=>{
+    return request.get('/user/GetSelfInfo')
+}
+
+export const GetFlightByid=(params)=>{
+    return request.get('/public/GetFlightByid',{params:params});
+}

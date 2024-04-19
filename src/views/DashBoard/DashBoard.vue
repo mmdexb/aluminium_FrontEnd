@@ -15,12 +15,11 @@ const PilotNum =ref(null);
 const AtcNum =ref(null);
 const ActNum =ref(null);
 const ServerTime =ref(null);
-
+var chartInstance;
+var chartInstance2;
 const Activity=ref([
 
 ]);
-
-const drawer = ref(false)
 
 const OnlineTimeUsers=ref([
 
@@ -91,7 +90,10 @@ const drawBarChart = async () => {
   // 提取 x 轴标签和对应的数据值
   const xData = data.map(item => item.cid);
   const yData = data.map(item => item.onlineTime);
-  const chartInstance = echarts.init(document.getElementById('chart'));
+  if(chartInstance!=null && chartInstance!=""&&chartInstance!= undefined){
+    chartInstance.dispose();
+  }
+  chartInstance = echarts.init(document.getElementById('chart'));
 
   // 配置图表选项
   const options = {
@@ -136,7 +138,7 @@ const drawWordCloud = async () => {
     series: [{
       type: 'wordCloud',
       data: wordCloudData.map(item => ({
-        name: item.Dep,
+        name: item.Field,
         value: item.Count,
       })),
       rotationRange: [0, 45],
@@ -145,22 +147,47 @@ const drawWordCloud = async () => {
     }],
   };
 
+  if(chartInstance2!=null && chartInstance2!=""&&chartInstance2!= undefined){
+    chartInstance2.dispose();
+  }
   // 使用配置项绘制词云图
-  const chartInstance = echarts.init(document.getElementById('wordCloudChart'));
-  chartInstance.setOption(wordCloudOptions);
+  chartInstance2 = echarts.init(document.getElementById('wordCloudChart'));
+  chartInstance2.setOption(wordCloudOptions);
 };
 
+var drawer=ref(false)
 
+
+
+const NoticeLable=ref({
+      noticeTitle:"",
+      noticeContent:"",
+      noticeTime:"",
+      noticeAuthor:""
+})
+
+const onNotice=(row)=>{
+  console.log("点击了详情")
+  console.log(row)
+  NoticeLable.value.noticeTitle=row.title;
+  NoticeLable.value.noticeContent=row.content;
+  NoticeLable.value.noticeAuthor=row.author;
+  NoticeLable.value.noticeTime=row.time;
+  drawer.value=true;
+}
 
 onMounted(() => {
   drawBarChart();
   drawWordCloud();
+
+  drawBarChart();
+  drawWordCloud();
+
+  drawWordCloud();
 });
 
 
-const ShowNotice=()=>{
 
-}
 </script>
 
 
@@ -273,12 +300,12 @@ const ShowNotice=()=>{
                 </div>
                 <div class="card-body">
                   <el-table :data="Notices" stripe style="width: 100%">
-                    <el-table-column prop="title" label="标题" width="180" />
+                    <el-table-column prop="title" label="标题" width="280" />
                     <el-table-column prop="time" label="发布日期" width="180" />
                     <el-table-column prop="author" label="作者" />
                     <el-table-column label="操作" width="120">
-                      <template #default="{ rows }">
-                        <el-button link type="primary" size="small" @click="drawer = true">
+                      <template #default="{ row }">
+                        <el-button link type="primary" size="small" @click="onNotice(row)">
                           详情
                         </el-button>
                       </template>
@@ -292,10 +319,11 @@ const ShowNotice=()=>{
       </div>
     </div>
   </div>
-  <el-drawer v-model="drawer" title="I am the title" :with-header="false">
-    <span>
-
-    </span>
+  <el-drawer v-model="drawer" title="公告详情" :with-header="true">
+      <h3 >{{NoticeLable.noticeTitle}}</h3>
+    <span>{{NoticeLable.noticeAuthor}} </span>&nbsp;&nbsp;&nbsp; <span>{{NoticeLable.noticeTime}}</span>
+    <hr>
+    <p>{{NoticeLable.noticeContent}}</p>
   </el-drawer>
 </template>
 <style scoped>
