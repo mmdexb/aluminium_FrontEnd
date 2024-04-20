@@ -1,0 +1,63 @@
+
+<html>
+<head>
+    <title>在线地图</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="./css/external/mdui.min.css" />
+    <link rel="stylesheet" href="./css/external/leaflet.css">
+    <link rel="stylesheet" href="./css/external/L.Control.Layers.Tree.css">
+    <link rel="stylesheet" href="./css/ocsar-map-v2.core.css">
+    <script src="./js/external/jquery-3.6.0.min.js"></script>
+    <script src="./js/external/mdui.min.js"></script>
+    <script src="./js/external/leaflet.js"></script>
+    <script src="./js/external/leaflet.rotatedMarker.js"></script>
+    <script src="./js/external/leaflet.MultiOptionsPolyline.min.js"></script>
+    <script src="./js/external/L.Control.Layers.Tree.js"></script>
+    <script src="./js/oscar-map-v2.core.js"></script>
+</head>
+<body class=" mdui-drawer-body-right mdui-theme-primary-blue-grey" onload="init()">
+<div class="mdui-drawer mdui-drawer-right mdui-shadow-4" style="width: 450px;border: 1px solid #ccc; border-radius: 5px;">
+    <div style="margin-top: 10px;">
+        <div id="tab" class="mdui-tab mdui-tab-centered mdui-tab-full-width">
+            <a href="#pilot" class="mdui-ripple"><p>飞行员</p></a>
+            <a href="#atc" class="mdui-ripple"><p>管制员</p></a>
+            <a href="#detail-body" class="mdui-ripple"><p>详情</p></a>
+        </div>
+        <div id="pilot" class="mdui-p-a-2">
+            <div class="mdui-table-fluid">
+                <table class="mdui-table">
+                    <thead>
+                    <tr>
+                        <th>呼号</th>
+                        <th>起飞</th>
+                        <th>降落</th>
+                    </tr>
+                    </thead>
+                    <tbody id="pilot-body">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="atc" class="mdui-p-a-2">
+            <div class="mdui-table-fluid">
+                <table class="mdui-table">
+                    <thead>
+                    <tr>
+                        <th>名称</th>
+                        <th>频率</th>
+                    </tr>
+                    </thead>
+                    <tbody id="atc-body">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="detail-body" class="mdui-p-a-2">
+            <p>请先选中一个机组或管制员</p>
+        </div>
+    </div>
+</div>
+<div id="map">
+</div>
+</body>
+</html>

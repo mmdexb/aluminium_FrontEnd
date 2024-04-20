@@ -1,4 +1,6 @@
 import request from '@/utils/request.js'
+import {ActivityDetail, ActivityPublish, updateEvent} from "@/api/ActivityControl";
+import data from "bootstrap/js/src/dom/data";
 
 export const userRegisterService=(registerData)=>{
     const params= new URLSearchParams();
@@ -24,5 +26,9 @@ export const GetUserInfo=()=>{
 }
 
 export const GetFlightByid=(params)=>{
-    return request.get('/public/GetFlightByid',{params:params});
+    return request.get('/public/GetFlightByid2',{params:params});
+}
+
+export const getUserLevel=()=>{
+    return request.get('/user/GetUserLevel', data.level)
 }

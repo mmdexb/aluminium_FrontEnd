@@ -1,0 +1,55 @@
+#map {
+    height: 100%;
+}
+
+@media (max-width: 1023.9px){
+    .mdui-drawer-body-left:not(.mdui-drawer-open) {
+        padding-left:  0%;
+    }
+}
+.mdui-drawer-body-right:not(.mdui-drawer-open) {
+    padding-right:  450px;
+    border: #0b2529;
+
+}
+
+.tag {
+    padding: 3px;
+    background-color: #ffffff;
+    border: 0px solid #fff;
+    border-radius: 3px;
+}
+
+.tag::before {
+    visibility: hidden;
+}
+
+@media (min-width: 1023.9px){
+    .popup {
+        display: none;
+    }
+}
+
+.tag-icon {
+    max-width: 50px;
+}
+
+.detail-icon {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.detail-img {
+    max-width: 80%;
+}
+
+.time {
+    z-index: 114514;
+    position: fixed;
+    margin-top: 0px;
+    font-size: 25px;
+    font-weight: bold;
+    width: 180px;
+    cursor: default;
+    left: 50%;
+}

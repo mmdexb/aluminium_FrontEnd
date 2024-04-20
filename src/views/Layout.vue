@@ -10,6 +10,34 @@ import {
   CaretBottom
 } from '@element-plus/icons-vue'
 import avatar from '@/assets/default.png'
+import router from "@/router";
+import {GetUserInfo} from '@/api/user'
+import {ref} from "vue";
+
+const Logout =() =>{
+  localStorage.removeItem("pinia-token");
+  router.push('/login')
+}
+
+const Info=ref({
+
+})
+
+const isadmin= ref(false)
+
+const GetInfo=async () => {
+  let res = await GetUserInfo();
+  Info.value=res.data;
+  console.log(Info.value)
+  if(Info.value.level==="ADMINISTRATOR"){
+    isadmin.value=true
+  }
+
+}
+GetInfo();
+
+
+
 </script>
 //田鑫提交测试
 <template>
@@ -33,6 +61,12 @@ import avatar from '@/assets/default.png'
           </el-icon>
           <span>活动中心</span>
         </el-menu-item>
+        <el-menu-item index="/map">
+          <el-icon>
+            <Promotion />
+          </el-icon>
+          <span>在线地图</span>
+        </el-menu-item>
         <el-sub-menu >
           <template #title>
             <el-icon>
@@ -53,7 +87,7 @@ import avatar from '@/assets/default.png'
           </el-icon>
           <span>航前准备</span>
         </el-menu-item>
-        <el-sub-menu >
+        <el-sub-menu  v-if="isadmin">
           <template #title>
             <el-icon>
               <UserFilled />
@@ -89,7 +123,7 @@ import avatar from '@/assets/default.png'
                     </span>
           <template #dropdown>
             <el-dropdown-menu>
-              <el-dropdown-item command="logout" :icon="SwitchButton">退出登录</el-dropdown-item>
+              <el-dropdown-item command="logout" :icon="SwitchButton"  @click="Logout" >退出登录</el-dropdown-item>
             </el-dropdown-menu>
           </template>
         </el-dropdown>

@@ -9,7 +9,12 @@
         <el-input v-model="formModel.eventname" placeholder="请输入活动名称"></el-input>
       </el-form-item>
       <el-form-item label="活动日期" prop="eventtime" style="margin-left: 10px; margin-right: 10px;">
-        <el-input v-model="formModel.eventtime" placeholder="请输入活动日期"></el-input>
+        <el-date-picker
+            v-model="formModel.eventtime"
+            type="datetime"
+            placeholder="请选择活动日期"
+            style="width: 100%"
+        ></el-date-picker>
       </el-form-item>
       <el-form-item label="起飞机场" prop="dep" style="margin-left: 10px; margin-right: 10px;">
         <el-input v-model="formModel.dep" placeholder="请输入起飞机场"></el-input>

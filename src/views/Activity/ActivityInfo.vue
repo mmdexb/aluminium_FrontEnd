@@ -3,16 +3,14 @@ import {ref, onMounted} from 'vue';
 import {ActivityList} from '@/api/ActivityControl';
 
 
-const activitys = ref({
-
-});
+const activitys = ref({});
 
 const getActivitylist =async ()=>{
   let params={
     page: "1",
     pageSize: "5",
   }
-  let result= await Activitylist(params)
+  let result= await ActivityList(params)
   activitys.value=result.data.rows;
 }
 getActivitylist();

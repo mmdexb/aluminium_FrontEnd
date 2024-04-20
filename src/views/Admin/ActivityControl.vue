@@ -32,7 +32,7 @@ const onDeleteActivity = async (row) => {
   console.log('row',row);
     try {
       await ActivityDelete({id:row.eventid});
-      getActivityList();
+      await getActivityList();
     } catch (error) {
       console.error('Failed to delete activity', error);
       ElMessage.error('删除失败');
