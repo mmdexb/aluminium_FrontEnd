@@ -1,11 +1,28 @@
-<script setup>
-
+<script >
+export default {
+  data() {
+    return {
+      htmlSrc:'http://127.0.0.1:9807/', // 注意: 直接写 static ,前面不需要加任何路径和字符。
+    };
+  },
+};
 </script>
 
 <template>
-航前准备
+  <div class="wrap">
+    <iframe
+        ref="iframe"
+        :src="htmlSrc"
+        width="100%"
+        height="100%">
+    </iframe>
+  </div>
+
 </template>
 
 <style scoped lang="scss">
-
+.wrap{
+  width: 100%;
+  height: 100%;
+}
 </style>

@@ -8,6 +8,7 @@ import UserInfo from "@/views/User/UserInfo.vue";
 import BeforeFly from "@/views/BeforeFlight/BeforeFly.vue";
 import UserControl from "@/views/Admin/UserControl.vue";
 import ActivityControl from "@/views/Admin/ActivityControl.vue";
+import Map from "@/views/map.vue"
 
 //定义路由关系
 const routes = [
@@ -25,6 +26,7 @@ const routes = [
             { path: '/User/UserInfo', component: UserInfo },
             { path: '/Admin/UserControl', component: UserControl },
             { path: '/Admin/ActivityControl', component: ActivityControl },
+            { path: '/Map', component: Map },
         ]
     }
 ]

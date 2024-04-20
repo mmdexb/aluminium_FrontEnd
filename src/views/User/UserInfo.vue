@@ -97,7 +97,8 @@ getInfo()
                         <el-table-column prop="dep" label="起飞机场" width="100" />
                         <el-table-column prop="arr" label="到达机场" width="100" />
                         <el-table-column prop="type" label="机型" width="100" />
-                        <el-table-column prop="startTime" label="登录时间" />
+                        <el-table-column prop="startTime" label="登录时间" width="180" />
+                        <el-table-column prop="route" label="航路" />
                       </el-table>
                     </div>
                   </div>

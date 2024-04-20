@@ -24,5 +24,5 @@ export const GetUserInfo=()=>{
 }
 
 export const GetFlightByid=(params)=>{
-    return request.get('/public/GetFlightByid',{params:params});
+    return request.get('/public/GetFlightByid2',{params:params});
 }

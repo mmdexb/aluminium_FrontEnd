@@ -33,6 +33,12 @@ import avatar from '@/assets/default.png'
           </el-icon>
           <span>活动中心</span>
         </el-menu-item>
+        <el-menu-item index="/map">
+          <el-icon>
+            <Promotion />
+          </el-icon>
+          <span>在线地图</span>
+        </el-menu-item>
         <el-sub-menu >
           <template #title>
             <el-icon>
