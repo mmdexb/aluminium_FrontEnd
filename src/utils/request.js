@@ -35,7 +35,10 @@ instance.interceptors.response.use(
         if(result.data.code==0&&result.data.msg=="NOT_LOGIN"){
             ElMessage.error('未登录，将跳转到登陆界面');
             router.push('/login')
+        }else {
+            ElMessage.error(result.data.msg);
         }
+
 
     }
 )

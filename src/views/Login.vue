@@ -75,13 +75,13 @@ import {userRegisterService,userLoginService} from '@/api/user'
 
 const register=async ()=>{
     let result = await userRegisterService(registerData.value);
-    ElMessage.success("注册成功")
-    router.push('/login')
-    // if (result.code==1){
-    //   alert("注册成功");
-    // }else{
-    //   alert(result.msg);
-    // }
+
+    if (result.code==1){
+      ElMessage.success("注册成功")
+      router.push('/login')
+    }else{
+      alert(result.msg);
+    }
 }
 
 const login=async ()=>{

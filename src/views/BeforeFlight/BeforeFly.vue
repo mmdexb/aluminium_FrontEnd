@@ -2,7 +2,7 @@
 export default {
   data() {
     return {
-      htmlSrc:'http://127.0.0.1:9807/', // 注意: 直接写 static ,前面不需要加任何路径和字符。
+      htmlSrc:'route', // 注意: 直接写 static ,前面不需要加任何路径和字符。
     };
   },
 };

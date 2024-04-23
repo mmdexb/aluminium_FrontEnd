@@ -1,5 +1,5 @@
 //导入vue-router
-import { createRouter, createWebHistory } from 'vue-router'
+import {createRouter, createWebHashHistory, createWebHistory} from 'vue-router'
 //导入组件
 import LayoutVue from '@/views/Layout.vue'
 import ActivityInfo from '@/views/Activity/ActivityInfo.vue'
@@ -9,6 +9,7 @@ import BeforeFly from "@/views/BeforeFlight/BeforeFly.vue";
 import UserControl from "@/views/Admin/UserControl.vue";
 import ActivityControl from "@/views/Admin/ActivityControl.vue";
 import Map from "@/views/map.vue"
+import NoticeControl from "@/views/Admin/NoticeControl.vue";
 
 //定义路由关系
 const routes = [
@@ -27,13 +28,14 @@ const routes = [
             { path: '/Admin/UserControl', component: UserControl },
             { path: '/Admin/ActivityControl', component: ActivityControl },
             { path: '/Map', component: Map },
+            { path: '/Admin/NoticeControl', component: NoticeControl}
         ]
     }
 ]
 
 //创建路由器
 const router = createRouter({
-    history: createWebHistory(),
+    history: createWebHashHistory(),
     routes: routes
 });
 

@@ -4,10 +4,12 @@ import {
   Promotion,
   UserFilled,
   User,
+  Files,
   Crop,
-  EditPen,
+  HomeFilled,
   SwitchButton,
-  CaretBottom
+  CaretBottom,
+  LocationFilled
 } from '@element-plus/icons-vue'
 import avatar from '@/assets/default.png'
 import router from "@/router";
@@ -24,11 +26,14 @@ const Info=ref({
 })
 
 const isadmin= ref(false)
+const username=ref("")
 
 const GetInfo=async () => {
   let res = await GetUserInfo();
   Info.value=res.data;
   console.log(Info.value)
+  username.value=Info.value.realname;
+  console.log(username.value)
   if(Info.value.level==="ADMINISTRATOR"){
     isadmin.value=true
   }
@@ -50,37 +55,23 @@ GetInfo();
           active-text-color="#ffd04b"
           router>
         <el-menu-item index="/Dashboard" >
-          <el-icon>
-            <Management />
-          </el-icon>
+          <el-icon><HomeFilled /></el-icon>
           <span>仪表盘</span>
         </el-menu-item>
         <el-menu-item index="/ActivityInfo">
-          <el-icon>
-            <Promotion />
-          </el-icon>
+          <el-icon><Files /></el-icon>
           <span>活动中心</span>
         </el-menu-item>
         <el-menu-item index="/map">
-          <el-icon>
-            <Promotion />
-          </el-icon>
+          <el-icon><LocationFilled /></el-icon>
           <span>在线地图</span>
         </el-menu-item>
-        <el-sub-menu >
-          <template #title>
-            <el-icon>
-              <UserFilled />
-            </el-icon>
-            <span>个人中心</span>
-          </template>
-          <el-menu-item index="/User/UserInfo" >
-            <el-icon>
-              <User />
-            </el-icon>
-            <span>基本资料</span>
-          </el-menu-item>
-        </el-sub-menu>
+        <el-menu-item index="/User/UserInfo" >
+          <el-icon>
+            <User />
+          </el-icon>
+          <span>基本资料</span>
+        </el-menu-item>
         <el-menu-item index="/BeforeFlight">
           <el-icon>
             <Promotion />
@@ -106,6 +97,12 @@ GetInfo();
             </el-icon>
             <span>活动管理</span>
           </el-menu-item>
+          <el-menu-item index="/Admin/NoticeControl" >
+            <el-icon>
+              <Crop />
+            </el-icon>
+            <span>公告管理</span>
+          </el-menu-item>
         </el-sub-menu>
       </el-menu>
     </el-aside>
@@ -113,7 +110,7 @@ GetInfo();
     <el-container>
       <!-- 头部区域 -->
       <el-header height="60px">
-        <div>早上好：<strong>LinusChen</strong></div>
+        <div>欢迎：<strong>{{ username }}</strong></div>
         <el-dropdown placement="bottom-end">
                     <span class="el-dropdown__box">
                         <el-avatar :src="avatar" />

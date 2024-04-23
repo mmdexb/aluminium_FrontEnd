@@ -39,7 +39,6 @@ const getInfo =async ()=>{
   PilotNum.value=res.data;
   res=await GetATCnum();
   AtcNum.value=res.data;
-  ActNum.value="6";
   ServerTime.value=Math.ceil((new Date()-new Date('2024-04-10T12:00:00') ) / (1000 * 60 * 60));
 }
 getInfo()
@@ -66,6 +65,7 @@ const GetActivity=async ()=>{
   let res=await GetActivitys(params);
   console.log(res.data)
   Activity.value=res.data.rows;
+  ActNum.value=res.data.total;
 }
 GetActivity();
 
@@ -132,6 +132,7 @@ const drawWordCloud = async () => {
 
   // 获取后端数据
   const wordCloudData = Hotairports.value;
+  
 
   // 提取词语和对应权重
   const wordCloudOptions = {
